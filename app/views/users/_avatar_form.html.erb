@@ -1,7 +1,7 @@
-<turbo-frame id="avatar_form" class="fixed m-auto bg-black flex flex-col justify-center items-center text-center z-1000">
-  <%= link_to "✖", "#", data: { turbo_frame: "avatar_form" }, class: "close-avatar-form" %>
+<turbo-frame id="avatar_form">
+  <%= link_to "✖", "#", class: "hover:text-gold-dark", data: { turbo_frame: "avatar_form" } %>
 
-  <%= image_tag(@user.avatar, id: "avatar-preview", data: { avatar_preview_target: "image"}) %>
+  <%= image_tag(@user.avatar, id: "avatar-preview", data: { avatar_preview_target: "image"}, class: "w-[250px] h-[250px] rounded-full border-2 object-contain my-4") %>
 
   <%= form_with model: @user, url: update_avatar_user_path(@user), method: :patch, local: false do |f| %>
     <% if @user.errors.any? %>
@@ -11,8 +11,8 @@
         <% end %>
       </div>
     <% end %>
-    <%= f.file_field :profile_picture, accept: "image/png, image/jpeg, image.jpg", direct_upload: true, data: { action: "change->avatar-preview#updatePreview", avatar_preview_target: "input" } %>
-    <%= f.submit "Update Avatar" %>
+    <%= f.file_field :profile_picture, accept: "image/png, image/jpeg, image.jpg", direct_upload: true, class: "text-black file:bg-gold file:text-black file:p-3 file:cursor-pointer", data: { action: "change->avatar-preview#updatePreview", avatar_preview_target: "input" } %>
+    <%= f.submit "Update Avatar", class: "bg-gold text-black p-3 cursor-pointer" %>
   <% end %>
 
 </turbo-frame>

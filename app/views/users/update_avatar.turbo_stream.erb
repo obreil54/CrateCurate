@@ -1,10 +1,10 @@
 <turbo-stream action="replace" target="avatar">
   <template>
     <turbo-frame id="avatar">
-      <div id="avatar-container">
-        <%= image_tag(@user.avatar, id: "profile-avatar") %>
-        <%= link_to edit_avatar_user_path(@user), id: "edit-avatar", data: { turbo_frame: "avatar_form" } do %>
-          <i class="fa-solid fa-pencil"></i> Edit Avatar
+      <div id="avatar-container" class="relative group">
+        <%= image_tag(@user.avatar, class: "rounded-full w-[250px] h-[250px] border-2 object-contain") %>
+        <%= link_to edit_avatar_user_path(@user), id: "edit-avatar", class: "absolute top-[70%] left-[26%] bg-black text-white p-2 rounded-sm justify-center align-center hidden group-hover:flex", data: { turbo_frame: "avatar_form" } do %>
+          <%= icon "pencil-square" %> Edit Avatar
         <% end %>
       </div>
     </turbo-frame>
