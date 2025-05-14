@@ -1,0 +1,13 @@
+<div data-controller="avatar-preview" class="min-h-[70vh] flex justify-center items-center text-gold">
+  <turbo-frame id="avatar">
+    <div id="avatar-container" class="relative group w-[250px] h-[250px]">
+      <%= image_tag(@user.avatar, class: "rounded-full border-2 object-contain") %>
+      <%= link_to edit_avatar_user_path(@user), id: "edit-avatar", class: "absolute top-[70%] left-[26%] bg-black text-white p-2 rounded-sm justify-center align-center hidden group-hover:flex", data: { turbo_frame: "avatar_form" } do %>
+        <%= icon "pencil-square" %> Edit Avatar
+      <% end %>
+    </div>
+  </turbo-frame>
+  <h1 class="ml-6 text-6xl"><%= @user.username %></h1>
+
+  <turbo-frame id="avatar_form"></turbo-frame>
+</div>
