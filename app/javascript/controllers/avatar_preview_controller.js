@@ -8,12 +8,14 @@ export default class extends Controller {
   }
 
   updatePreview() {
+    console.log("Updating avatar preview")
     const file = this.inputTarget.files[0]
+    console.log(file)
     if (file) {
       const reader = new FileReader()
       reader.onload = (e) => {
-        this
-      };
+        this.imageTarget.src = e.target.result
+      }
       reader.readAsDataURL(file)
     }
   }
