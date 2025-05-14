@@ -1,0 +1,31 @@
+<div class="min-h-[70vh] flex flex-col justify-center items-center text-gold">
+  <% if alert = flash[:alert] %>
+    <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= alert %></p>
+  <% end %>
+
+  <% if notice = flash[:notice] %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <h1 class="text-3xl">Sign in</h1>
+
+  <%= form_with url: session_url, class: "w-[20%] text-xl" do |form| %>
+    <div class="my-5">
+      <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "text-center w-full border-1 border-gold p-2 focus: outline-none focus:border-2" %>
+    </div>
+
+    <div class="my-5">
+      <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "text-center w-full border-1 border-gold p-2 focus:outline-none focus:border-2" %>
+    </div>
+
+    <div class="flex justify-between items-center">
+      <div class= "bg-gold text-black p-3 border-2 border-gold">
+        <%= form.submit "Sign in", class: "cursor-pointer" %>
+      </div>
+
+      <div class="text-gold p-3 border-2 border-gold">
+        <%= link_to "Forgot password?", new_password_path %>
+      </div>
+    </div>
+  <% end %>
+</div>

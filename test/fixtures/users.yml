@@ -1,0 +1,15 @@
+ilya:
+  id: 1
+  first_name: "Ilya"
+  last_name: "Obretetskiy"
+  username: "DJ Ils"
+  email_address: "obreil54@gmail.com"
+  password_digest: <%= BCrypt::Password.create 'password' %>
+
+premier:
+  id: 2
+  first_name: "Christopher"
+  last_name: "Martin"
+  username: "DJ Premier"
+  email_address: "premier@gangstarr.com"
+  password_digest: <%= BCrypt::Password.create 'GangStarr' %>
